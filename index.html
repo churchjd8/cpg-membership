@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPG Founders Membership — Dream Makers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-900: #0f172a;
+      --stone-50: #fafaf9;
+      --stone-100: #f5f5f4;
+      --stone-200: #e7e5e3;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --amber-600: #d97706;
+      --amber-700: #b45309;
+      --amber-100: #fef3c7;
+      --emerald-100: #d1fae5;
+      --emerald-600: #059669;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--stone-50);
+      color: var(--slate-800);
+      line-height: 1.6;
+    }
+
+    .font-display {
+      font-family: 'Fraunces', serif;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-up {
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out forwards;
+    }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(250, 250, 249, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(231, 229, 227, 0.5);
+    }
+
+    .nav-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--slate-800);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+      color: white;
+      padding: 0.625rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(30, 58, 95, 0.3);
+    }
+
+    .btn-primary-lg {
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+    }
+
+    .btn-gold {
+      background: var(--amber-500);
+      color: var(--slate-900);
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-gold:hover {
+      background: var(--amber-400);
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(180deg, #faf9f7 0%, #f5f3ef 100%);
+      padding: 8rem 1.5rem 5rem;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 896px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      color: var(--amber-700);
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 500;
+      color: var(--slate-800);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      color: var(--slate-600);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      max-width: 768px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-founder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .hero-founder img {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 9999px;
+      object-fit: cover;
+      border: 2px solid white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .hero-founder-text {
+      text-align: left;
+      font-size: 0.875rem;
+      color: var(--slate-600);
+      max-width: 400px;
+    }
+
+    .hero-founder-text strong {
+      color: var(--slate-800);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 6rem 1.5rem;
+    }
+
+    .section-white { background: white; }
+    .section-stone { background: var(--stone-50); }
+    .section-stone-dark { background: var(--stone-100); }
+    .section-dark { background: var(--slate-800); color: white; }
+
+    .container { max-width: 768px; margin: 0 auto; }
+    .container-lg { max-width: 1024px; margin: 0 auto; }
+    .container-xl { max-width: 1152px; margin: 0 auto; }
+
+    .accent-line {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #c9a962 0%, #d4b978 100%);
+      margin-bottom: 2rem;
+    }
+
+    .accent-line-center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.25rem;
+      color: var(--slate-300);
+      margin-bottom: 4rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .text-center { text-align: center; }
+
+    /* Problem Section */
+    .problem-content p {
+      font-size: 1.125rem;
+      color: var(--slate-600);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .problem-content .highlight {
+      font-weight: 500;
+      color: var(--slate-700);
+    }
+
+    .callout {
+      background: var(--stone-50);
+      border-left: 4px solid var(--amber-600);
+      padding: 1.5rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin-top: 2.5rem;
+    }
+
+    .callout p {
+      color: var(--slate-700);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* Solution Section */
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      text-align: left;
+    }
+
+    .solution-card {
+      background: rgba(51, 65, 85, 0.5);
+      backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(71, 85, 105, 0.5);
+    }
+
+    .solution-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .solution-card h3 {
+      font-weight: 500;
+      font-size: 1.125rem;
+      color: white;
+      margin-bottom: 0.25rem;
+    }
+
+    .solution-card p {
+      color: var(--slate-400);
+      font-size: 0.9375rem;
+    }
+
+    .solution-footer {
+      margin-top: 3rem;
+      font-size: 1.125rem;
+      color: var(--amber-400);
+      font-weight: 500;
+    }
+
+    /* What You Get */
+    .pillar-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .pillar-number {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      background: var(--amber-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--amber-700);
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+    }
+
+    .pillar-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--slate-800);
+    }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .pillar-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid var(--stone-200);
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-2px);
+      border-color: #c9a962;
+    }
+
+    .pillar-card-label {
+      color: var(--amber-600);
+      font-weight: 500;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar-card h4 {
+      font-weight: 500;
+      font-size: 1.125rem;
+      color: var(--slate-800);
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-card p {
+      color: var(--slate-600);
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
+
+    .speaker-avatars {
+      display: flex;
+      margin-top: 1rem;
+    }
+
+    .speaker-avatars img {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 9999px;
+      border: 2px solid white;
+      object-fit: cover;
+      margin-left: -0.5rem;
+    }
+
+    .speaker-avatars img:first-child {
+      margin-left: 0;
+    }
+
+    .speaker-avatars .more {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 9999px;
+      background: var(--slate-200);
+      border: 2px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--slate-600);
+      margin-left: -0.5rem;
+    }
+
+    /* Who This Is For */
+    .fit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+
+    .fit-list {
+      list-style: none;
+    }
+
+    .fit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .fit-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    .fit-icon-yes {
+      background: var(--emerald-100);
+    }
+
+    .fit-icon-no {
+      background: var(--stone-100);
+    }
+
+    .fit-icon svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+
+    .fit-icon-yes svg { color: var(--emerald-600); }
+    .fit-icon-no svg { color: var(--slate-400); }
+
+    .fit-list p {
+      color: var(--slate-600);
+      font-size: 0.9375rem;
+    }
+
+    .fit-not h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      color: var(--slate-800);
+      margin-bottom: 1.5rem;
+    }
+
+    .fit-not .fit-list p {
+      color: var(--slate-500);
+    }
+
+    /* Testimonials */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-header img {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 9999px;
+      object-fit: cover;
+    }
+
+    .testimonial-name {
+      font-weight: 500;
+      color: var(--slate-800);
+    }
+
+    .testimonial-title {
+      color: var(--slate-500);
+      font-size: 0.875rem;
+    }
+
+    .testimonial-quote {
+      color: var(--slate-600);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* About Jeff */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .about-grid {
+        grid-template-columns: 2fr 3fr;
+      }
+    }
+
+    .about-image img {
+      border-radius: 1rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .about-label {
+      color: var(--amber-700);
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .about-content .section-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-intro {
+      font-size: 1.125rem;
+      color: var(--slate-600);
+      margin-bottom: 2rem;
+    }
+
+    .about-list {
+      list-style: none;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--slate-600);
+      margin-bottom: 0.75rem;
+    }
+
+    .about-list-dot {
+      width: 0.375rem;
+      height: 0.375rem;
+      border-radius: 9999px;
+      background: var(--amber-500);
+      flex-shrink: 0;
+    }
+
+    /* Pricing */
+    .pricing-card {
+      background: linear-gradient(135deg, var(--slate-700) 0%, rgba(51, 65, 85, 0.5) 100%);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      border: 1px solid rgba(71, 85, 105, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .pricing-card {
+        padding: 3rem;
+      }
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--amber-500);
+      color: var(--slate-900);
+      padding: 0.5rem 1rem;
+      border-bottom-left-radius: 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .pricing-intro {
+      color: var(--slate-400);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .pricing-tier {
+      background: rgba(71, 85, 105, 0.3);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+
+    .pricing-tier-label {
+      color: var(--amber-400);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-tier-price {
+      font-family: 'Fraunces', serif;
+      font-size: 1.875rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .pricing-tier-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--slate-400);
+    }
+
+    .pricing-tier-original {
+      color: var(--slate-400);
+      font-size: 0.875rem;
+      text-decoration: line-through;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-tier-desc {
+      color: var(--slate-300);
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-tier ul {
+      list-style: none;
+      font-size: 0.875rem;
+      color: var(--slate-300);
+    }
+
+    .pricing-tier li {
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-note {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: rgba(71, 85, 105, 0.3);
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--slate-300);
+    }
+
+    .pricing-note strong {
+      color: var(--amber-400);
+    }
+
+    .pricing-cta {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .pricing-cta-note {
+      color: var(--slate-400);
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 0.75rem;
+      border: 1px solid var(--stone-200);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--slate-800);
+    }
+
+    .faq-question:hover {
+      background: var(--stone-50);
+    }
+
+    .faq-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--slate-400);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 1.5rem 1.25rem;
+      color: var(--slate-600);
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      padding: 6rem 1.5rem;
+      background: white;
+      text-align: center;
+    }
+
+    .final-cta .section-title {
+      font-size: clamp(1.75rem, 5vw, 3rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .final-cta-subtitle {
+      font-size: 1.25rem;
+      color: var(--slate-600);
+      margin-bottom: 2.5rem;
+    }
+
+    .final-cta-note {
+      color: var(--slate-500);
+      font-size: 0.875rem;
+      max-width: 480px;
+      margin: 1.5rem auto 0;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--slate-900);
+      color: var(--slate-400);
+      padding: 3rem 1.5rem;
+    }
+
+    .footer-inner {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .footer-copy {
+      font-size: 0.875rem;
+    }
+
+    /* Arrow icon */
+    .arrow-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Dream Makers</a>
+      <a href="#pricing" class="btn-primary">Become a Member</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="animate-fade-up">
+        <p class="hero-label">CPG Founders Membership</p>
+        <h1 class="hero-title">You don't have to build alone.</h1>
+      </div>
+      <p class="hero-subtitle animate-fade-up delay-100">
+        The CPG Founders Membership gives you the expert guidance, proven playbook, and founder community you need to build a brand that lasts.
+      </p>
+      <div class="animate-fade-up delay-200">
+        <a href="#pricing" class="btn-primary btn-primary-lg">
+          Become a Founding Member
+          <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+      <div class="hero-founder animate-fade-up delay-300">
+        <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/1735001444546-42FRCB2LS1IAEKZVYMCT/unnamed.png" alt="Jeff Church">
+        <p class="hero-founder-text">
+          <strong>Led by Jeff Church</strong> — 8x founder, BevNET Person of the Year, and the cofounder who built Suja Juice into a $100M CPG brand in just 5 years.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="accent-line"></div>
+      <h2 class="section-title">You've done the hard part.<br>Now comes the harder part.</h2>
+      <div class="problem-content">
+        <p>Whether you're about to launch your CPG brand or you've been grinding for the past year or so, you're all in on this brand. You've got real skin in the game. You should feel proud — most people never get this far.</p>
+        <p class="highlight">But now you're in the thick of it.</p>
+        <p>Fundraising. Retail expansion. DTC growth. Marketing. Operations. Supply chain. There's a million decisions to make, limited cash to make them with, and every wrong move costs you — a bad distribution deal, a pricing mistake, a fumbled investor pitch can cost you months of runway, or worse.</p>
+        <p>CPG is one of the hardest industries to survive in, let alone make it. It's easy to feel overwhelmed, isolated, and like you're constantly reinventing the wheel.</p>
+        <div class="callout">
+          <p>Here's the thing: you can keep learning the hard way on your own dime. Or you can learn from someone who's already been through it — skip the fatal flaws, avoid the pitfalls, and stack the odds in your favor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="section section-dark">
+    <div class="container-lg text-center">
+      <p class="hero-label" style="color: var(--amber-400);">The Solution</p>
+      <h2 class="section-title" style="color: white;">The support system you needed yesterday.</h2>
+      <p class="section-subtitle">A mentor in your corner. A community that gets it. A playbook that actually works. All in one, flexible membership.</p>
+      
+      <div class="solution-grid">
+        <div class="solution-card">
+          <div class="solution-card-icon">🎯</div>
+          <h3>Expert guidance</h3>
+          <p>from someone who's actually done it — at scale</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-card-icon">📘</div>
+          <h3>A proven playbook</h3>
+          <p>refined over 35 years and 8 companies</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-card-icon">👥</div>
+          <h3>A community of founders</h3>
+          <p>who get what you're going through</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-card-icon">✓</div>
+          <h3>Accountability</h3>
+          <p>to keep you moving forward, not spinning your wheels</p>
+        </div>
+      </div>
+      
+      <p class="solution-footer">One insight. One introduction. One save. That's all it takes to 10x your investment.</p>
+    </div>
+  </section>
+
+  <!-- What You Get Section -->
+  <section class="section section-stone">
+    <div class="container-lg">
+      <div class="text-center" style="margin-bottom: 4rem;">
+        <div class="accent-line accent-line-center"></div>
+        <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+      </div>
+
+      <!-- Pillar 1 -->
+      <div class="pillar-header">
+        <div class="pillar-number">1</div>
+        <h3 class="pillar-title">Expert Access</h3>
+      </div>
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <div class="pillar-card-label">Worth $6,000+</div>
+          <h4>1:1 Financial Modeling Session with Jeff</h4>
+          <p>Your financial model is the first thing investors look at. In your first 90 days, work directly with Jeff to build (or pressure-test) a bottoms-up 5-year financial model.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>Personalized Strategy & Action Plan</h4>
+          <p>Jeff works with you directly upon onboarding to assess your business and help you build your personalized action plan — so you know exactly what to focus on first.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>Bi-Weekly Group Sessions with Jeff</h4>
+          <p>Every other week, join a 90-minute session: 45 minutes of deep teaching on critical CPG topics + 45 minutes of live Q&A on your specific challenges.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>Monthly Guest Speakers</h4>
+          <p>Hear directly from CPG legends who've built, scaled, and exited iconic brands.</p>
+          <div class="speaker-avatars">
+            <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/5b8794be-3e49-4c81-b34b-2097fa70f801/Screenshot+2025-04-22+at+10.33.57+AM.png" alt="Speaker">
+            <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/3868ec68-3627-4931-9ee9-e5fc2fd9d50b/image001.jpg" alt="Speaker">
+            <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/d59edddb-aeb4-44e8-a8b2-dc35335da6dd/Screenshot+2025-04-22+at+10.30.37+AM.png" alt="Speaker">
+            <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/68cf0ef5-7c67-427b-ba16-a56caa982753/Screenshot+2025-04-22+at+10.28.48+AM.png" alt="Speaker">
+            <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/6d5cf7c4-34a3-4b16-b84b-c3cc7ac2583e/63e8f998be8e5c7f7fdad7bf_jXOvi0gW.jpg" alt="Speaker">
+            <div class="more">+</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="pillar-header">
+        <div class="pillar-number">2</div>
+        <h3 class="pillar-title">Community & Accountability</h3>
+      </div>
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <h4>Private Founders Community</h4>
+          <p>Connect with other CPG founders via WhatsApp. Share wins, ask questions, get vendor recommendations.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>Weekly Accountability Calls</h4>
+          <p>Every Monday morning, set your #1 priority for the week. Led by a dedicated accountability coach.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>In-Person Meetups</h4>
+          <p>Connect at happy hours and events at major trade shows — Expo West, BevNet, and more.</p>
+        </div>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="pillar-header">
+        <div class="pillar-number">3</div>
+        <h3 class="pillar-title">Resources & Tools</h3>
+      </div>
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <div class="pillar-card-label">$9,000 value</div>
+          <h4>Full CPG Bootcamp Access</h4>
+          <p>30+ hours of curated content, 450+ narrated slides, dozens of downloadable financial models, templates, and tools. Your permanent reference library.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>Babu AI — Your CPG Co-Founder</h4>
+          <p>Pro access to a purpose-built AI trained on 20+ years of CPG knowledge. Use it for market research, financial review, competitor tracking, and more.</p>
+        </div>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div class="pillar-header">
+        <div class="pillar-number">4</div>
+        <h3 class="pillar-title">Pitch Opportunities</h3>
+      </div>
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <h4>Retailer Pitch Slams (2x/year)</h4>
+          <p>Practice your retail pitch with real feedback from former category buyers at Whole Foods, Walmart, and Ahold.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-card-label">$10K Investment Prize</div>
+          <h4>Investor Pitch Slam (2x/year)</h4>
+          <p>Get coached by experienced CPG professionals, then pitch to real investors. First-time members get priority registration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="section section-white">
+    <div class="container-lg">
+      <div class="text-center" style="margin-bottom: 4rem;">
+        <div class="accent-line accent-line-center"></div>
+        <h2 class="section-title">This is for you if...</h2>
+      </div>
+      
+      <div class="fit-grid">
+        <div>
+          <ul class="fit-list">
+            <li>
+              <div class="fit-icon fit-icon-yes">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p>You're committed — whether pre-revenue or scaling toward $10M, you're all in on building this brand.</p>
+            </li>
+            <li>
+              <div class="fit-icon fit-icon-yes">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p>You've got skin in the game. Real time, money, or both invested.</p>
+            </li>
+            <li>
+              <div class="fit-icon fit-icon-yes">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p>You've been grinding for 12-18 months and ready for guidance.</p>
+            </li>
+            <li>
+              <div class="fit-icon fit-icon-yes">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p>You want to fundraise and get investor-ready.</p>
+            </li>
+            <li>
+              <div class="fit-icon fit-icon-yes">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p>You're overwhelmed by all the things to figure out.</p>
+            </li>
+            <li>
+              <div class="fit-icon fit-icon-yes">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p>You're tired of piecing together advice from Google and podcasts.</p>
+            </li>
+            <li>
+              <div class="fit-icon fit-icon-yes">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <p>You're done trying to figure it all out alone.</p>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="fit-not">
+          <h3>This probably isn't for you if...</h3>
+          <ul class="fit-list">
+            <li>
+              <div class="fit-icon fit-icon-no">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+              <p>You're just exploring the idea of starting a CPG business</p>
+            </li>
+            <li>
+              <div class="fit-icon fit-icon-no">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+              <p>You're looking for a magic bullet or someone to do the work for you</p>
+            </li>
+            <li>
+              <div class="fit-icon fit-icon-no">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+              <p>You're not willing to show up, ask questions, and put in the reps</p>
+            </li>
+            <li>
+              <div class="fit-icon fit-icon-no">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </div>
+              <p>You just want content — this is about community, accountability, and access</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-stone-dark">
+    <div class="container-xl">
+      <div class="text-center" style="margin-bottom: 4rem;">
+        <div class="accent-line accent-line-center"></div>
+        <h2 class="section-title">What founders are saying</h2>
+      </div>
+      
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/1735001444523-R2NVKHTE593170U0C21A/Frame+12.png" alt="Simon Solis-Cohen">
+            <div>
+              <div class="testimonial-name">Simon Solis-Cohen</div>
+              <div class="testimonial-title">Founder, Huxley</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"Working with Jeff has been a game-changing crash course for my business. It really is an MBA in CPG. The bootcamp videos were full of relevant and detailed lessons and the dialogue during the in-person calls has been invaluable."</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/1735001444526-GMM527OX39P5NDR1PKOO/Frame+13.png" alt="Carolyn Hamlet">
+            <div>
+              <div class="testimonial-name">Carolyn Hamlet</div>
+              <div class="testimonial-title">Founder, Oku Conscious Energy Gummy Snacks</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"Jeff's thoughtful leadership, unwavering integrity, and genuine passion for helping others succeed make him not only a brilliant mentor but also an exceptional person, whose guidance has saved me invaluable time and money."</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/1735001444539-CK828IXUURCN5O09BO5I/Frame+17.png" alt="Tiffany Tatom">
+            <div>
+              <div class="testimonial-name">Tiffany Tatom</div>
+              <div class="testimonial-title">CEO, Live Pure</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"Jeff has amazing CPG knowledge, business experience and life lessons. 5-star review from us. Jeff led us all the way through a successful $1.5M Angel fundraising."</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/1735001444542-8E4AY23YDT22H8E49AXM/Frame+18.png" alt="Kim Perell">
+            <div>
+              <div class="testimonial-name">Kim Perell</div>
+              <div class="testimonial-title">Co-Founder & CEO, JUNI</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"Jeff is a rare individual with deep knowledge of all departments — whether it be financial model building, sales, marketing, cost accounting, operations — he can add deep value in any of these areas."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Jeff -->
+  <section class="section section-white">
+    <div class="container-lg">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://images.squarespace-cdn.com/content/v1/676a0558c52f9f6df16f34f0/1735001444546-42FRCB2LS1IAEKZVYMCT/unnamed.png" alt="Jeff Church">
+        </div>
+        <div class="about-content">
+          <p class="about-label">Your Guide</p>
+          <h2 class="section-title">Jeff Church</h2>
+          <p class="about-intro">Jeff isn't a consultant who read about CPG in a book. He's an 8-time founder who's been in the trenches — building, scaling, raising, and exiting.</p>
+          <ul class="about-list">
+            <li><span class="about-list-dot"></span> Co-founded Suja Juice → scaled to $100M+ in under 5 years</li>
+            <li><span class="about-list-dot"></span> 5 successful exits totaling over $700M in value</li>
+            <li><span class="about-list-dot"></span> Raised $275M+ across 40+ funding rounds (median angel return: 10x)</li>
+            <li><span class="about-list-dot"></span> BevNET's Person of the Year (2015) & E&Y Entrepreneur of the Year</li>
+            <li><span class="about-list-dot"></span> Co-authored a New York Times bestseller</li>
+            <li><span class="about-list-dot"></span> Harvard Business School MBA and CPA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section section-dark">
+    <div class="container" style="max-width: 896px;">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <p class="hero-label" style="color: var(--amber-400);">Pricing</p>
+        <h2 class="section-title" style="color: white;">Simple, transparent pricing.</h2>
+      </div>
+      
+      <div class="pricing-card">
+        <div class="pricing-badge">🚀 Founding Member Offer</div>
+        <p class="pricing-intro">Launching March 2026 • Limited to First 15 Members</p>
+        
+        <div class="pricing-grid">
+          <div class="pricing-tier">
+            <p class="pricing-tier-label">First 3 Months</p>
+            <div class="pricing-tier-price">$1,500<span>/month</span></div>
+            <p class="pricing-tier-original">$2,000/month</p>
+            <p class="pricing-tier-desc">Your onboarding phase. Jeff gets in the trenches with you.</p>
+            <ul>
+              <li>• 1:1 financial modeling session</li>
+              <li>• Personalized action plan</li>
+              <li>• Full access to all benefits</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-tier">
+            <p class="pricing-tier-label">Month 4+</p>
+            <div class="pricing-tier-price">$1,500<span>/month</span></div>
+            <p class="pricing-tier-desc" style="margin-top: 2.25rem;">Month-to-month. Cancel anytime with 30 days notice.</p>
+            <ul>
+              <li>• Continued access to everything</li>
+              <li>• Bi-weekly sessions & community</li>
+              <li>• Accountability & tools</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="pricing-note">
+          <strong>Why this structure?</strong> The first 90 days are intensive with hands-on work to get your financial model and strategy dialed in. As a founding member, you skip the premium and lock in $1,500/month from day one.
+        </div>
+        
+        <div class="pricing-cta">
+          <a href="#" class="btn-gold">
+            Schedule a Call
+            <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <p class="pricing-cta-note">Book a 25-minute call with Jeff to see if the membership is right for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-stone">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 4rem;">
+        <div class="accent-line accent-line-center"></div>
+        <h2 class="section-title">Questions? We've got answers.</h2>
+      </div>
+      
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How is this different from an accelerator?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            Traditional accelerators charge $10–20K upfront, run on fixed cohort schedules, and end after 10–12 weeks. This membership is designed for ongoing, 360° support — join anytime, stay as long as you need, and get continuous access to Jeff, the community, and resources. No rigid timelines, no massive upfront commitment.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How much time do I need to commit?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            That's up to you. The bi-weekly sessions with Jeff are 90 minutes. The Monday accountability calls are 30 minutes. Beyond that, you engage as much or as little as you need — whether that's diving deep into the Bootcamp, posting in the community, or using Babu AI for quick answers.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>I'm pre-revenue. Is this for me?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            It can be — if you're serious. This membership is for founders who are all in, whether you're about to launch or scaling toward $10M. If you've got real skin in the game and you're committed to bringing your product to market, there's a ton here for you.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What if I've already done the CPG Accelerator?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            Great — you'll get even more out of this. Many members are accelerator alumni who want ongoing support after their program ends. The membership picks up where the accelerator leaves off.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I cancel anytime?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            After your initial 3-month commitment, yes. Just give us 30 days written notice. We want you here because it's valuable, not because you're locked in.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What's Babu AI?</span>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            Babu is a custom AI assistant trained on Jeff's 35+ years of CPG experience and loaded with 4,000+ expert resources. Use it for market research, financial review, pricing strategy, competitor tracking, or to pressure-test your investor and retail decks. Think of it as a CPG co-founder in your pocket — available 24/7.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="section-title">Ready to stop going it alone?</h2>
+      <p class="final-cta-subtitle">You've built something worth fighting for. Let's make sure it wins.</p>
+      <a href="#" class="btn-primary btn-primary-lg">
+        Schedule a Call
+        <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+      <p class="final-cta-note">🚀 Founding Member Special: First 15 members get the first 3 months at $1,500/month (save $1,500). Then $1,500/month ongoing. Cancel anytime after month 3.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Dream Makers</div>
+      <p class="footer-copy">© 2026 Dream Makers. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isOpen = item.classList.contains('open');
+        
+        // Close all other FAQs
+        document.querySelectorAll('.faq-item').forEach(faq => {
+          faq.classList.remove('open');
+        });
+        
+        // Toggle current FAQ
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
